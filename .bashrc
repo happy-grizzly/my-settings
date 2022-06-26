@@ -113,3 +113,6 @@ if ! shopt -oq posix; then
   fi
 fi
 source ~/.local/share/blesh/ble.sh
+
+# nvim appimage alias
+  alias nv="/opt/nvim/bin/nvim.appimage"

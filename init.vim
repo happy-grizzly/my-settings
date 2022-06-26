@@ -32,6 +32,8 @@ autocmd VimEnter * imap <C-l> <Right>
 " Jump editor navigation in vim mode
 map <C-l> 5l
 map <C-h> 5h
+vmap <C-j> 5j
+vmap <C-k> 5k
 
 " jump to end of line or doc
 map <leader>l $
@@ -42,7 +44,7 @@ imap <C-s> <Bs>
 imap <C-u> <Esc>ua
 imap <C-r>  <Esc><C-r>a
 " imap <C-w> <Esc>diwa
-imap <C-d> <delete>
+imap <C-d> <Esc>lxa
 
 " delete content of line without deleting the line
 nmap <leader>d d$d0x
@@ -126,8 +128,6 @@ nnoremap w :call LangToggle()<CR>
 
 let g:instant_markdown_mathjax = 1
 
-let g:coq_settings = { 'auto_start': v:true }
-
 call plug#begin()
 
 Plug 'https://github.com/machakann/vim-highlightedyank'
@@ -135,9 +135,6 @@ Plug 'scrooloose/nerdtree'
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
-Plug 'vimwiki/vimwiki'
-
 Plug 'psliwka/vim-smoothie'
 
 call plug#end()
-

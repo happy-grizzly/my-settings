@@ -1,12 +1,12 @@
 set number
 set autoindent
 
-:tnoremap <Esc> <C-\><C-n>:q!<CR>set shiftwidth=2
-:set smarttab
+tnoremap <Esc> <C-\><C-n>:q!<CR>set shiftwidth=2
+set smarttab
 set tabstop=2
-:set softtabstop=0
+set softtabstop=0
 set shiftwidth=2
-:set scrolloff=999
+set scrolloff=999
 let mapleader = " "
 
 nmap <leader>nh :noh<CR>
@@ -14,6 +14,7 @@ nmap <Leader>q :q<CR>
 nmap <Leader>w :w<CR>
 nmap <Leader>3 :so init.vim<CR>
 imap <C-Space> <Esc>
+nmap <C-Space> i
 
 " configure line creating
 map o o<Esc>i
@@ -23,14 +24,14 @@ map <leader>o i<CR><Esc>
 imap <C-p> <Esc>o
 
 " navigation in editing mode
-imap <C-h> <Left>
-imap <C-j> <Down>
-imap <C-k> <Up>
-imap <C-l> <Right>
+autocmd VimEnter * imap <C-h> <Left>
+autocmd VimEnter * imap <C-j> <Down>
+autocmd VimEnter * imap <C-k> <Up>
+autocmd VimEnter * imap <C-l> <Right>
 
 " Jump editor navigation in vim mode
-map L 5l
-map K 5k
+map <C-l> 5l
+map <C-h> 5h
 
 " jump to end of line or doc
 map <leader>l $
@@ -38,6 +39,8 @@ map <leader>h 0
 
 " delete in editing mode
 imap <C-s> <Bs>
+imap <C-u> <Esc>ua
+imap <C-r>  <Esc><C-r>a
 " imap <C-w> <Esc>diwa
 imap <C-d> <delete>
 
@@ -51,10 +54,10 @@ nmap <leader>s <C-w>s
 nmap <leader>v <C-w>v
 
 " navigating between tabs
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
+nmap H <C-w>h
+nmap J <C-w>j
+nmap K <C-w>k
+nmap L <C-w>l
 
 " resising tabs
 nmap . <C-w>>
@@ -67,6 +70,14 @@ nmap <leader>J <C-w>J
 nmap <leader>H <C-w>H
 nmap <leader>R <C-w>R
 nmap <leader>r <C-w>r
+
+" Automatically close
+inoremap { {}<Esc>ha
+inoremap ( ()<Esc>ha
+inoremap [ []<Esc>ha
+inoremap " ""<Esc>ha
+inoremap ' ''<Esc>ha
+inoremap ` ``<Esc>ha
 
 nnoremap <leader>t :term<CR>
 tnoremap <Esc> <C-\><C-n>
@@ -98,8 +109,8 @@ function SmoothScroll(up)
     endwhile
 endfunction
 
-map K :call SmoothScroll(1)<Enter>
-map J :call SmoothScroll(0)<Enter>
+nmap <C-k> :call SmoothScroll(1)<Enter>
+nmap <C-j> :call SmoothScroll(0)<Enter>
 
 function! LangToggle()
   if s:hebrew
@@ -122,9 +133,6 @@ call plug#begin()
 Plug 'https://github.com/machakann/vim-highlightedyank'
 Plug 'scrooloose/nerdtree'
 
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 Plug 'vimwiki/vimwiki'
@@ -132,3 +140,4 @@ Plug 'vimwiki/vimwiki'
 Plug 'psliwka/vim-smoothie'
 
 call plug#end()
+
